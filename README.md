@@ -1,6 +1,7 @@
 # Bombus Discord Bot
 
-Minimal Discord bot that uses local `dronefly-discord` and `dronefly-core` checkouts.
+Implements a subset of Dronefly features for large Discord communities for whom
+the full feature set of Dronefly is not necessary.
 
 ## Setup
 
@@ -9,17 +10,20 @@ This project uses `uv` for dependency management.
 1. Install dependencies and lock them with prerelease support:
 
 ```bash
-cd /home/synrg/work/bombus
-uv lock --prerelease=allow
-uv install
+git clone https://github.com/dronefly-garden bombus
+cd bombus
+uv sync --prerelease=allow
 ```
 
 2. Make sure the local packages are available:
 
-- `dronefly-discord` checkout at `/home/synrg/work/dronefly-discord`
-- `dronefly-core` checkout at `/home/synrg/work/dronefly-core`
+- `dronefly-discord` checkout at `../dronefly-discord`
+    - currently on `bombus-menus` branch
+- `dronefly-core` checkout at `../dronefly-core`
+    - currently on `devel` branch
 
-These are referenced in `pyproject.toml` with local file URLs.
+These are referenced in `pyproject.toml` with absolute local file URLs that need
+to be edited to match your actual local paths to them.
 
 ## Running
 
@@ -31,4 +35,4 @@ python bot.py
 ## Notes
 
 - The bot currently depends on local package installs from the checkouts above.
-- If you update either local checkout, rerun `uv lock --prerelease=allow` and `uv install`.
+- If you update either local checkout, rerun `uv sync --prerelease=allow`.

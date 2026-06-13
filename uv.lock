@@ -6,6 +6,9 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 
+[options]
+prerelease-mode = "allow"
+
 [[package]]
 name = "aiohappyeyeballs"
 version = "2.6.2"
@@ -247,8 +250,8 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "dronefly-core", directory = "../dronefly-core" },
-    { name = "dronefly-discord", directory = "../dronefly-discord" },
+    { name = "dronefly-core", directory = "/home/synrg/work/dronefly-core" },
+    { name = "dronefly-discord", directory = "/home/synrg/work/dronefly-discord" },
     { name = "requests", specifier = "==2.32.5" },
     { name = "requests-cache", specifier = "==1.2.1" },
     { name = "requests-ratelimiter", specifier = "==0.8.0" },
@@ -489,7 +492,7 @@ wheels = [
 [[package]]
 name = "dronefly-core"
 version = "0.5.0.dev1"
-source = { directory = "../dronefly-core" }
+source = { directory = "/home/synrg/work/dronefly-core" }
 dependencies = [
     { name = "dateparser" },
     { name = "filelock" },
@@ -512,7 +515,7 @@ requires-dist = [
 [[package]]
 name = "dronefly-discord"
 version = "0.2.0.dev1"
-source = { directory = "../dronefly-discord" }
+source = { directory = "/home/synrg/work/dronefly-discord" }
 dependencies = [
     { name = "discord-py" },
     { name = "dronefly-core" },
