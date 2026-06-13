@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: bombus
+Version: 0.1.0
+Summary: A discord bot for naturalists providing a subset of Dronefly features
+Requires-Python: >=3.11
+Requires-Dist: dronefly-discord @ file:///home/synrg/work/dronefly-discord
+Requires-Dist: dronefly-core @ file:///home/synrg/work/dronefly-core
+Requires-Dist: requests==2.32.5
+Requires-Dist: requests-cache==1.2.1
+Requires-Dist: requests-ratelimiter==0.8.0

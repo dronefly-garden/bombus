@@ -1,0 +1,8 @@
+README.md
+bot.py
+pyproject.toml
+bombus.egg-info/PKG-INFO
+bombus.egg-info/SOURCES.txt
+bombus.egg-info/dependency_links.txt
+bombus.egg-info/requires.txt
+bombus.egg-info/top_level.txt

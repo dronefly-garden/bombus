@@ -1,0 +1,5 @@
+dronefly-discord @ file:///home/synrg/work/dronefly-discord
+dronefly-core @ file:///home/synrg/work/dronefly-core
+requests==2.32.5
+requests-cache==1.2.1
+requests-ratelimiter==0.8.0
