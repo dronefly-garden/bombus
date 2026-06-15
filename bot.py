@@ -1,6 +1,7 @@
 import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 HERE = Path(__file__).resolve().parent
 LOCAL_DRONEFLY_DISCORD = HERE.parent / "dronefly-discord"
@@ -47,12 +48,6 @@ class BombusTaxonMenu(TaxonMenu):
         self.ctx = ctx
         self.bot = self.cog.bot
         self.author = ctx.author
-        if self.source.formatter.image_number is None:
-            self.add_item(self.taxonomy_button)
-        else:
-            self.add_item(self.image_back_button)
-            self.add_item(self.image_forward_button)
-        self.add_item(self.stop_button)
         self.message = await self.send_initial_message(ctx)
         if hasattr(self.bot, 'active_views'):
             self.bot.active_views.add(self)
@@ -72,7 +67,9 @@ taxon = app_commands.Group(name="taxon", description="Taxon commands")
 @taxon.command(name="show", description="Show a taxon")
 @app_commands.describe(query="Search query for a taxon")
 async def taxon_show(interaction: discord.Interaction, query: str) -> None:
-    await interaction.response.defer()
+    if not interaction.response.is_done():
+        await interaction.response.defer()
+
     parsed_query = interaction.client.natural_parser.parse(query)
     query_response = await prepare_query_for_taxon(
         interaction.client.inat_client, parsed_query
@@ -93,13 +90,13 @@ async def taxon_show(interaction: discord.Interaction, query: str) -> None:
 
 @taxon.command(name="image", description="Show a taxon image")
 @app_commands.describe(
-    number="Image number to show",
     query="Search query for a taxon",
+    number="Image number to show",
 )
 async def taxon_image(
     interaction: discord.Interaction,
-    number: int = 1,
     query: str | None = None,
+    number: Optional[int] = 1,
 ) -> None:
     if query is None:
         await interaction.response.send_message(
@@ -108,7 +105,9 @@ async def taxon_image(
         )
         return
 
-    await interaction.response.defer()
+    if not interaction.response.is_done():
+        await interaction.response.defer()
+
     parsed_query = interaction.client.natural_parser.parse(query)
     query_response = await prepare_query_for_taxon(
         interaction.client.inat_client, parsed_query
